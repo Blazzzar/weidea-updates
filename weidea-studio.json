@@ -12,9 +12,24 @@
 			"sections": {
 				"changelog": "<h4>0.1.0</h4><p>Phase 0 scaffold: control registry, design tokens + Kadence bridge, Section block, two-track update channel with rollback.</p>"
 			}
+		},
+		"beta": {
+			"version": "0.2.0-beta.1",
+			"requires": "6.5",
+			"tested": "6.9",
+			"requires_php": "7.4",
+			"download_url": "https://blazzzar.github.io/weidea-updates/zips/weidea-studio-0.2.0-beta.1.zip",
+			"sections": {
+				"changelog": "<h4>0.2.0-beta.1</h4><p>See CHANGELOG.md for 0.2.0-beta.1.</p>"
+			}
 		}
 	},
 	"releases": [
+		{
+			"version": "0.2.0-beta.1",
+			"released": "2026-07-14",
+			"download_url": "https://blazzzar.github.io/weidea-updates/zips/weidea-studio-0.2.0-beta.1.zip"
+		},
 		{
 			"version": "0.1.0",
 			"released": "2026-07-14",
