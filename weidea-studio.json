@@ -14,17 +14,22 @@
 			}
 		},
 		"beta": {
-			"version": "0.3.0-beta.4",
+			"version": "0.3.0-beta.5",
 			"requires": "6.5",
 			"tested": "6.9",
 			"requires_php": "7.4",
-			"download_url": "https://blazzzar.github.io/weidea-updates/zips/weidea-studio-0.3.0-beta.4.zip",
+			"download_url": "https://blazzzar.github.io/weidea-updates/zips/weidea-studio-0.3.0-beta.5.zip",
 			"sections": {
-				"changelog": "<h4>0.3.0-beta.4</h4><p>See CHANGELOG.md for 0.3.0-beta.4.</p>"
+				"changelog": "<h4>0.3.0-beta.5</h4><p>See CHANGELOG.md for 0.3.0-beta.5.</p>"
 			}
 		}
 	},
 	"releases": [
+		{
+			"version": "0.3.0-beta.5",
+			"released": "2026-07-16",
+			"download_url": "https://blazzzar.github.io/weidea-updates/zips/weidea-studio-0.3.0-beta.5.zip"
+		},
 		{
 			"version": "0.3.0-beta.4",
 			"released": "2026-07-15",
@@ -44,11 +49,6 @@
 			"version": "0.3.0-beta.1",
 			"released": "2026-07-15",
 			"download_url": "https://blazzzar.github.io/weidea-updates/zips/weidea-studio-0.3.0-beta.1.zip"
-		},
-		{
-			"version": "0.2.0-beta.2",
-			"released": "2026-07-14",
-			"download_url": "https://blazzzar.github.io/weidea-updates/zips/weidea-studio-0.2.0-beta.2.zip"
 		}
 	]
 }
