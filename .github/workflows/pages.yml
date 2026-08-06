@@ -1,0 +1,59 @@
+# Deploy this repo to GitHub Pages through Actions.
+#
+# WHY THIS EXISTS. The legacy Pages builder failed three times in a row on
+# August 6 2026 while publishing 0.3.0-beta.16 — every one at ~10.5 minutes
+# (its 10-minute timeout) with no diagnostic beyond "Page build failed." The
+# third attempt was a deliberately EMPTY commit and failed identically, which
+# ruled out anything in the repo's contents: the builder itself was the
+# broken part. Ruled out by measurement first: repo 7.3 MB, published zips
+# 4.57 MB, largest file 1.05 MB against a 100 MB per-file limit, .nojekyll
+# present, and GitHub's status page reporting Pages operational throughout.
+#
+# This is the standard static-site deploy and nothing more. The site is a
+# manifest plus a folder of zips — there is no build step to run, so the
+# whole repo is uploaded as-is.
+#
+# .nojekyll stays. Actions deploys the artifact verbatim, so it is not doing
+# anything here today — but it costs nothing and it is what stops Jekyll
+# processing the site if this repo is ever pointed back at the legacy
+# builder.
+name: Deploy Pages
+
+on:
+  push:
+    branches: [ main ]
+  # Hand-triggerable, because the thing this replaces could not be retried
+  # except by pushing a commit — which is how an empty commit ended up in
+  # this repo's history.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two publishes race. A release publish is a manifest and a zip
+# landing together; a half-applied deploy is the one outcome worse than a
+# late one. In-progress runs are allowed to finish for the same reason.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      - name: Upload the whole site (manifest + zips, no build step)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
